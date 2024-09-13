@@ -21,17 +21,17 @@
               <p><%= error_message ? error_message[0] : message[0] %></p> <!-- Display the first error or success message -->
             </div>
           <% } %>
-          <h1 class="mb-4 text-center">Enter Your Details</h1>
+          <h1 class="mb-4 text-center">Search For Your Hold Order</h1>
           <form action="/submit" method="POST" class="card p-4 shadow-sm w-100" id="pin-form">
             <!-- Surname Field -->
             <div class="mb-3">
-              <label for="surname" class="form-label">Surname</label>
-              <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter your surname" required>
+              <label for="surname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter your lastname" required>
             </div>
       
             <!-- PIN Number Field -->
             <div class="mb-3">
-              <label for="pin" class="form-label">PIN Number</label>
+              <label for="pin" class="form-label">Hold Pin</label>
               <input type="password" class="form-control" id="pin" name="pin" placeholder="Enter your PIN number" required>
             </div>
       
