@@ -4,7 +4,7 @@ import 'datejs';
 
 function getAllTransaction(surname, pin) {
   return new Promise((resolve, reject) => {
-    getActiveTransactions(surname, pin, (err, results) => {
+    getActiveTransactions(capitalizeFirstLetter(surname), pin, (err, results) => {
       if (err) {
         console.error("Failed to execute query:", err);
         return reject(err);  // Propagate the error
@@ -102,6 +102,14 @@ function getElapsedTimeHour(epochTimeStamp){
     return hoursElapsed;
 }
 
-export{getAllTransaction,getProposedHoldTime,convertEpocToDate,calculateFutureTime,getElapsedTime}
+
+function capitalizeFirstLetter(str) {
+  if (!str || typeof str !== 'string') {
+      return ''; // Handle invalid input
+  }
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+export{getAllTransaction,getProposedHoldTime,convertEpocToDate,calculateFutureTime,getElapsedTime,capitalizeFirstLetter}
 
 

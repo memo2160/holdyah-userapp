@@ -3,7 +3,7 @@
 import express from 'express';
 
 import mysql from 'mysql';
-import{getAllTransaction,getProposedHoldTime,convertEpocToDate,calculateFutureTime,getElapsedTime}  from './src/controllers/controllers.js';
+import{getAllTransaction,getProposedHoldTime,convertEpocToDate,calculateFutureTime,getElapsedTime,capitalizeFirstLetter}  from './src/controllers/controllers.js';
 import dotenv from 'dotenv';
 import flash from 'express-flash';
 import session from 'express-session';
@@ -14,6 +14,7 @@ const app = express();
 const port = 3000;
 
 // Set EJS as the template engine
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(cookieParser());
@@ -58,7 +59,7 @@ app.post('/submit', async (req, res) => {
     const pin = req.body['pin'];
   
     try {
-      const results = await getAllTransaction(surname, pin);
+      const results = await getAllTransaction(capitalizeFirstLetter(surname), pin);
       const time_to_hold = getProposedHoldTime(results[0].rate_type,results[0].proposed_time_hold)
       console.log(results);
       
